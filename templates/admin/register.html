@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Attendance System</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Smart Attendance System</h1>
+
+<h2>Student Registration</h2>
+
+<form action="/register" method="POST">
+
+<input type="text" name="roll" placeholder="Roll Number" required>
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<input type="text" name="department" placeholder="Department" required>
+
+<input type="text" name="semester" placeholder="Semester" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<button type="submit">
+
+Register Student
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

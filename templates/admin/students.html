@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Students</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+background:#f4f6f9;
+}
+
+/* Navbar */
+
+.navbar{
+
+height:70px;
+
+background:#1E3A8A;
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 30px;
+
+}
+
+.navbar h2{
+
+font-size:24px;
+
+}
+
+/* Container */
+
+.container{
+
+width:95%;
+
+margin:30px auto;
+
+background:white;
+
+padding:25px;
+
+border-radius:10px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+/* Top */
+
+.top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.search{
+
+width:300px;
+
+padding:12px;
+
+border-radius:8px;
+
+border:1px solid #ccc;
+
+}
+
+.btn{
+
+background:#2563EB;
+
+color:white;
+
+padding:12px 20px;
+
+text-decoration:none;
+
+border-radius:8px;
+
+}
+
+.btn:hover{
+
+background:#1D4ED8;
+
+}
+
+/* Table */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+table th{
+
+background:#2563EB;
+
+color:white;
+
+padding:14px;
+
+}
+
+table td{
+
+padding:14px;
+
+text-align:center;
+
+border-bottom:1px solid #ddd;
+
+}
+
+table tr:hover{
+
+background:#f2f7ff;
+
+}
+
+img{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+.edit{
+
+background:#22C55E;
+
+padding:8px 12px;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:5px;
+
+}
+
+.delete{
+
+background:#EF4444;
+
+padding:8px 12px;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:5px;
+
+}
+
+.edit:hover{
+
+background:#16A34A;
+
+}
+
+.delete:hover{
+
+background:#DC2626;
+
+}
+
+.footer{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.page{
+
+padding:8px 12px;
+
+background:#2563EB;
+
+color:white;
+
+margin:5px;
+
+text-decoration:none;
+
+border-radius:5px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<h2>👨‍🎓 Student Management</h2>
+
+<a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">
+
+DASHBOARD
+
+</a>
+
+</div>
+
+<div class="container">
+
+<div class="top">
+
+<input
+type="text"
+class="search"
+placeholder="🔍 Search Student...">
+
+<a href="/add_student" class="btn">
+
+<i class="fa fa-user-plus"></i>
+
+Add Student
+
+</a>
+
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Photo</th>
+
+<th>Roll No</th>
+
+<th>Name</th>
+
+<th>Department</th>
+
+<th>Semester</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for student in students %}
+
+<tr>
+
+<td>
+    {% if student.photo %}
+        <img src="{{ url_for('static', filename='uploads/' + student.photo) }}"
+             alt="Student Photo">
+    {% else %}
+        <img src="{{ url_for('static', filename='uploads/default.png') }}"
+             alt="Default Photo">
+    {% endif %}
+</td>
+
+<td>{{student.roll_no}}</td>
+
+<td>{{student.name}}</td>
+
+<td>{{student.department}}</td>
+
+<td>{{student.semester}}</td>
+
+<td>{{student.email}}</td>
+
+<td>{{student.phone}}</td>
+
+<td>
+
+<a href="/edit_student/{{student.id}}" class="edit">
+
+<i class="fa fa-edit"></i>
+
+</a>
+
+<form action="{{ url_for('admin.delete_student', id=student.id) }}"
+      method="POST"
+      style="display:inline;">
+
+    <button
+        type="submit"
+        class="btn btn-danger btn-sm"
+        onclick="return confirm('Delete this student?')">
+
+        Delete
+
+    </button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="footer">
+
+<p>Total Students : {{students|length}}</p>
+
+<div>
+
+<a href="#" class="page">1</a>
+
+<a href="#" class="page">2</a>
+
+<a href="#" class="page">3</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

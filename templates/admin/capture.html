@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capture Face</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+
+body{
+
+background:#f4f6f9;
+
+font-family:Arial;
+
+}
+
+.container{
+
+width:700px;
+
+margin:40px auto;
+
+background:white;
+
+padding:30px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+h2{
+
+text-align:center;
+
+color:#1E3A8A;
+
+margin-bottom:25px;
+
+}
+
+label{
+
+font-weight:bold;
+
+}
+
+select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:8px;
+
+margin-bottom:20px;
+
+border-radius:8px;
+
+}
+
+button{
+
+padding:12px 25px;
+
+background:#2563EB;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:16px;
+
+}
+
+button:hover{
+
+background:#1D4ED8;
+
+}
+
+.back{
+
+background:#22C55E;
+
+text-decoration:none;
+
+padding:12px 25px;
+
+color:white;
+
+border-radius:8px;
+
+margin-left:20px;
+
+}
+
+.info{
+
+margin-top:25px;
+
+background:#EEF2FF;
+
+padding:20px;
+
+border-radius:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>
+
+<i class="fa fa-camera"></i>
+
+Capture Student Face
+
+</h2>
+
+<form action="/capture_face" method="POST">
+
+<label>Select Student</label>
+
+<select name="roll_no" required>
+
+{% for student in students %}
+
+<option value="{{ student.roll_no }}">
+
+{{ student.roll_no }} - {{ student.name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+<button type="submit">
+
+Start Camera
+
+</button>
+
+<a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">
+
+DASHBOARD
+
+</a>
+
+</form>
+
+<div class="info">
+
+<h3>Instructions</h3>
+
+<ul>
+
+<li>Choose the student.</li>
+
+<li>Click <b>Start Camera</b>.</li>
+
+<li>Look at the webcam.</li>
+
+<li>Move your face slowly.</li>
+
+<li>50 images will be captured automatically.</li>
+
+<li>The camera closes automatically.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

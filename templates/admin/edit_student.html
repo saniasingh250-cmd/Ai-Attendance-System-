@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Student</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+}
+
+.container{
+width:500px;
+margin:50px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+}
+
+button{
+padding:12px;
+background:#2563EB;
+color:white;
+border:none;
+width:100%;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Edit Student</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="text" name="roll_no" value="{{student.roll_no}}" required>
+
+<input type="text" name="name" value="{{student.name}}" required>
+
+<input type="text" name="department" value="{{student.department}}" required>
+
+<input type="text" name="semester" value="{{student.semester}}" required>
+
+<input type="email" name="email" value="{{student.email}}" required>
+
+<input type="text" name="phone" value="{{student.phone}}" required> 
+
+<div style="text-align:center; margin-bottom:20px;">
+
+    {% if student.photo %}
+        <img src="{{ url_for('static', filename='uploads/' + student.photo) }}"
+             width="120"
+             height="120"
+             style="border-radius:50%;">
+    {% else %}
+        <img src="{{ url_for('static', filename='uploads/default.png') }}"
+             width="120"
+             height="120"
+             style="border-radius:50%;">
+    {% endif %}
+
+</div>
+
+<label>Upload New Photo</label>
+<input type="file" name="photo" accept="image/*">
+fcan
+   <br><br>
+
+<video
+id="video"
+width="320"
+height="240"
+autoplay
+style="border:1px solid black;">
+</video>
+
+<br><br>
+
+<button
+type="button"
+onclick="startCamera()">
+
+Start Camera
+
+</button>
+
+<button
+type="button"
+onclick="capturePhoto()">
+
+Capture Photo
+
+</button>
+
+<br><br>
+
+<canvas
+id="canvas"
+width="220"
+height="140"
+style="border:1px solid red;">
+</canvas>
+
+<input
+type="hidden"
+name="captured_image"
+id="captured_image">
+
+<button type="submit">
+
+Update Student
+
+</button>
+
+</form>
+
+</div>
+<script>
+const video = document.getElementById("video");
+
+function startCamera() {
+
+    alert("Button clicked");
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Your browser does not support camera access.");
+        return;
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        alert("Camera started");
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function(error) {
+        alert("Camera Error: " + error.message);
+        console.log(error);
+    });
+}
+
+function capturePhoto() {
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    context.drawImage(video, 0, 0);
+
+    const image = canvas.toDataURL("image/png");
+
+    document.getElementById("captured_image").value = image;
+
+    alert("Photo Captured");
+}
+</script>
+</body>
+
+</html>
