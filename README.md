@@ -213,3 +213,65 @@ Special thanks to faculty members, mentors, and open-source communities for thei
 ---
 
 ⭐ If you find this project useful, consider giving it a star on GitHub.
+
+
+AN AI ATTENDANCE SYSYTEM
+
+STUNDENT LOGIN PAGE – 
+
+<img width="753" height="451" alt="image" src="https://github.com/user-attachments/assets/3d9e394b-2896-464a-b8b8-13de02e7e412" />
+
+
+STUDENT DASHBOARD – 
+
+<img width="753" height="329" alt="image" src="https://github.com/user-attachments/assets/39f46a32-a358-43da-aa10-c9fa29289113" />
+
+
+STUDENT CALENDER – 
+
+<img width="753" height="345" alt="image" src="https://github.com/user-attachments/assets/dbf74705-ee95-47cb-b541-57c468bd73f5" />
+
+
+
+MARK ATTENDANCE ONLINE VIA CAMERA- 
+
+<img width="753" height="226" alt="image" src="https://github.com/user-attachments/assets/9fb06158-2580-47f7-8c37-3982097ad513" />
+
+![Uploading image.png…]()
+
+
+
+ATTENDANCE TYPE –
+
+![Uploading image.png…]()
+
+
+
+EDIT PROFILE FOR STUDENT – 
+
+![Uploading image.png…]()
+
+
+ADMIN DASHBOARD – 
+
+![Uploading image.png…]()
+
+
+ATTENDANCE PANNEL – 
+
+![Uploading image.png…]()
+
+
+VIEW STUDENT – 
+
+![Uploading image.png…]()
+
+ADD STUDENT – 
+
+![Uploading image.png…]()
+![Uploading image.png…]()
+
+
+SEND NOTIFICATION – 
+![Uploading image.png…]()
+
